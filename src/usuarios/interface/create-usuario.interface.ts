@@ -1,6 +1,5 @@
-export interface CreateUsuario{
-    email:string;
-    nombre:string;
-    telefono:string;
-    clave:string;
-}
+export interface CreateUsuario {
+    email: string;
+    nombre: string;
+    clave: string;
+  }

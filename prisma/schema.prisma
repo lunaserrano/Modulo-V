@@ -15,13 +15,13 @@ model Usuarios {
   email String  @unique
   nombre  String
   clave String
-  telefono String
   ventas Ventas[]
 }
 
+
 model Ventas {
-  ventasId        Int     @id @default(autoincrement())
+  ventaId        Int     @id @default(autoincrement())
   fecha     DateTime
-  usuarioId_FK  Int
   usuario    Usuarios    @relation(fields: [usuarioId_FK], references: [usuarioId])
+  usuarioId_FK  Int
 }
