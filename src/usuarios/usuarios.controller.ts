@@ -4,9 +4,11 @@ import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { LoginUsuarioDto } from './dto/login-usuario.dto';
 import { JwtAuthGuard } from 'src/AUTH/auth.guard';
+import { ApiBasicAuth, ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('usuarios')
 @UseGuards(JwtAuthGuard)
+@ApiBearerAuth('JWT-auth')
 export class UsuariosController {
   constructor(private readonly usuariosService: UsuariosService) {}
 
@@ -14,6 +16,6 @@ export class UsuariosController {
   findAll() {
     return this.usuariosService.findAll();
   }
-
+ 
   
 }

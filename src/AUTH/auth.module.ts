@@ -17,7 +17,7 @@ import { JwtModule } from '@nestjs/jwt';
     JwtModule.register({
         secret:process.env.CLAVE_SECRETA,
         signOptions:{
-            expiresIn:360000
+            expiresIn:3600
         }
     })    
 ],
