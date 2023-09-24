@@ -70,19 +70,38 @@ export class UsuariosService {
 
    
   }
-  findAll() {
-    return `This action returns all usuarios`;
+  async findAll() {
+    return await this.prismaService.usuarios.findMany()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} usuario`;
+  //find one usuarios by id type number
+  async findOne(id: number) {
+
+    return await this.prismaService.usuarios.findUnique({
+      where:{
+        usuarioId: +id
+      }
+    })
+  }
+  
+
+  async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
+     //update query prisma ORM entity usuarios
+    return await this.prismaService.usuarios.update({
+      where:{
+        usuarioId:+id
+      },
+      data:updateUsuarioDto
+    })
   }
 
-  update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
-    return `This action updates a #${id} usuario`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} usuario`;
+  async remove(id: number) {
+    //delete query prisma ORM entity usuarios
+    return await this.prismaService.usuarios.delete({
+      where:{
+        usuarioId:id
+      }
+    })
+    
   }
 }

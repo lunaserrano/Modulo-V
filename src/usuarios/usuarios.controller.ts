@@ -16,6 +16,24 @@ export class UsuariosController {
   findAll() {
     return this.usuariosService.findAll();
   }
+
+  @Delete("/:id")
+  eliminar(@Param("id") id:number){ 
+    return this.usuariosService.remove(id);
+  }
+
+  
+  @Get("/:id")
+  buscarUno(@Param("id") id:number){ 
+    return this.usuariosService.findOne(id);
+  }
+
+
+  @Patch("/:id")
+actualizar(@Param("id") id: number, @Body() updateUsuarioDto: UpdateUsuarioDto) {
+  return this.usuariosService.update(id, updateUsuarioDto);
+}
+   
  
   
 }

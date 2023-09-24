@@ -16,6 +16,7 @@ model Usuarios {
   nombre  String
   clave String
   ventas Ventas[]
+  deposito Deposito[]
 }
 
 
@@ -24,4 +25,12 @@ model Ventas {
   fecha     DateTime
   usuario    Usuarios    @relation(fields: [usuarioId_FK], references: [usuarioId])
   usuarioId_FK  Int
+}
+
+model Deposito {
+  depositoId Int @id @default(autoincrement())
+  descripcion String
+  cantidad String
+  usuario Usuarios    @relation(fields: [usuarioId_FK], references: [usuarioId])
+  usuarioId_FK Int
 }
